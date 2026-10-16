@@ -89,16 +89,30 @@ class ConfigureTests(unittest.TestCase):
             "mcp_servers": {"other": {"url": "https://example.invalid/mcp"}},
             "platforms": {
                 "telegram": {"allow_from": ["999"], "channel_prompts": {"old-group": "keep"},
-                             "extra": {"custom_flag": 7}},
+                             "extra": {"custom_flag": 7, "allowed_chats": ["*"],
+                                       "group_allowed_chats": ["*"], "require_mention": False,
+                                       "observe_unmentioned_group_messages": False,
+                                       "mention_patterns": [".*"], "channel_prompts": {"-1001": "stale"},
+                                       "allow_from": ["999"], "group_allow_from": ["123"]}},
                 "discord": {"enabled": True},
             },
         }
-        result = configure.build_config("123", [], existing=existing)
+        result = configure.build_config("123", ["-1001"], existing=existing)
         self.assertEqual(result["custom"], {"kept": True})
         self.assertEqual(result["platforms"]["telegram"]["extra"]["custom_flag"], 7)
         self.assertEqual(result["platforms"]["telegram"]["allow_from"], ["123"])
         self.assertEqual(result["platforms"]["telegram"]["extra"]["allow_from"], ["123"])
-        self.assertEqual(result["platforms"]["telegram"]["extra"]["group_allow_from"], ["*"])
+        extra = result["platforms"]["telegram"]["extra"]
+        self.assertEqual(extra["group_allow_from"], ["*"])
+        self.assertEqual(extra["allow_from"], ["123"])
+        self.assertEqual(extra["allowed_chats"], ["123", "-1001"])
+        self.assertEqual(extra["group_allowed_chats"], ["-1001"])
+        self.assertTrue(extra["require_mention"])
+        self.assertTrue(extra["observe_unmentioned_group_messages"])
+        self.assertEqual(extra["mention_patterns"], [r"^\s*п[её]с(?:ик)?\b"])
+        self.assertEqual(extra["channel_prompts"]["old-group"], "keep")
+        self.assertIn("только в личном", extra["channel_prompts"]["-1001"])
+        self.assertNotEqual(extra["channel_prompts"]["-1001"], "stale")
         self.assertEqual(result["platforms"]["telegram"]["channel_prompts"]["old-group"], "keep")
         self.assertEqual(result["platforms"]["discord"], {"enabled": True})
         self.assertIn("other", result["mcp_servers"])
@@ -130,6 +144,9 @@ class ConfigureTests(unittest.TestCase):
             self.assertTrue(extra["rich_messages"])
             self.assertFalse(extra["reactions"])
             self.assertIn("-1001", extra["channel_prompts"])
+            self.assertEqual(extra["allowed_chats"], ["123", "-1001"])
+            self.assertTrue(extra["require_mention"])
+            self.assertEqual(extra["mention_patterns"], [r"^\s*п[её]с(?:ик)?\b"])
         finally:
             with contextlib.suppress(ValueError):
                 sys.path.remove(str(source))

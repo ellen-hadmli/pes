@@ -106,12 +106,16 @@ def build_config(owner_id: str, group_ids: list[str], template_path: Path = TEMP
     # Pin DM access to the owner while explicitly leaving every member of allowed groups eligible.
     telegram["allow_from"] = [owner_id]
     telegram["group_allow_from"] = ["*"]
-    # The v0.22.2 loader lets authored `extra` keys win over matching shared keys.
-    # Pin both locations so a stale extra.allow_from cannot override the owner.
-    telegram["extra"]["allow_from"] = [owner_id]
-    telegram["extra"]["group_allow_from"] = ["*"]
     telegram["channel_prompts"] = {**telegram.get("channel_prompts", {}),
                                    **{group_id: GROUP_PROMPT for group_id in group_ids}}
+    # The v0.22.2 loader lets authored extra keys win over shared keys. Pin every
+    # generated shared gate/prompt in both locations so an old config cannot weaken it.
+    managed_shared = (
+        "allow_from", "group_allow_from", "allowed_chats", "group_allowed_chats",
+        "require_mention", "observe_unmentioned_group_messages", "mention_patterns",
+        "channel_prompts",
+    )
+    telegram["extra"].update({key: telegram[key] for key in managed_shared})
     return merged
 
 
