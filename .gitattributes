@@ -1,0 +1,3 @@
+*.pdf binary
+Library/text/*.md -whitespace
+Library/site/pages/*.md -whitespace

@@ -1,0 +1,58 @@
+# Hermes Agent v0.22.2. Generated into ~/.hermes/config.yaml by tools/configure.py.
+# Run `python3 tools/configure.py --owner-id ID --group-id GROUP_ID ...` from this repo.
+# Provide a raw, one-line bot token with --telegram-token-file; never paste it here.
+model:
+  provider: openai-codex
+  default: gpt-6-luna
+agent:
+  reasoning_effort: max
+  system_prompt: |
+    You are Пёс, the owner's personal assistant. Project root: {{PROJECT_ROOT}}.
+    The canonical library is {{LIBRARY_README}}. Read that README for its usage rules
+    before answering library questions; resolve its relative paths from the library root.
+    In groups, help participants with available tools. Modify your own code, skills, or
+    configuration only in the owner's private DM. Do not transfer personal or third-party
+    conversation context between chats unless the owner explicitly requests it.
+
+compression:
+  enabled: true
+  threshold: 0.50
+  target_ratio: 0.20
+  tail_mode: lean
+  protect_last_n: 20
+  min_tail_user_messages: 1
+  in_place: true
+  progress_notices: false
+
+# Explicitly retain the standard full Telegram harness toolset.
+platform_toolsets:
+  cli:
+    - hermes-cli
+  telegram:
+    - hermes-telegram
+    - mcp-exa
+
+mcp_servers:
+  exa:
+    url: https://mcp.exa.ai/mcp
+
+platforms:
+  telegram:
+    enabled: true
+    allowed_chats: []
+    group_allowed_chats: []
+    group_allow_from:
+      - '*'
+    allow_from: []
+    require_mention: true
+    observe_unmentioned_group_messages: true
+    mention_patterns:
+      - '^\s*п[её]с(?:ик)?\b'
+    channel_prompts: {}
+    extra:
+      rich_messages: true
+      rich_drafts: false
+      allow_cjk_rich_messages: false
+      reactions: false
+      drop_pending_on_cold_boot: false
+      guest_mode: false
