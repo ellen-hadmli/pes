@@ -105,6 +105,8 @@ class ConfigureTests(unittest.TestCase):
 
     def test_real_v0222_gateway_loader_bridges_auth_and_telegram_settings(self) -> None:
         """Exercise the pinned source checkout's actual YAML loader when available."""
+        if sys.version_info < (3, 10):
+            self.skipTest("Hermes source loader requires a modern Python; use Python 3.12")
         source = Path(os.environ.get("HERMES_V0222_SOURCE", "/tmp/hermes-v0222"))
         if not (source / "gateway/config_loader.py").exists():
             self.skipTest("set HERMES_V0222_SOURCE to the Hermes v0.22.2 checkout")
