@@ -1,0 +1,119 @@
+{
+  "date": "2026-11-13",
+  "scope": "Каталог и заметки; полные тексты хранятся отдельно приватно.",
+  "books": [
+    {
+      "id": "pelevin-runic-oracle",
+      "title": "Гадание на рунах или рунический оракул Ральфа Блума",
+      "authors": [
+        "Виктор Пелевин"
+      ],
+      "format": "FB2",
+      "provided_filename": "242100.fb2",
+      "sha256": "5eb68adc8da4069879b17277a72783851f3a537e5598e58fa146777b2ecf3bea",
+      "bytes": 150152,
+      "sections": 3,
+      "images": 43,
+      "note": "notes/pelevin-runic-oracle.md",
+      "full_text_public": false,
+      "reading_status": "Структура, вступления и тематические фрагменты"
+    },
+    {
+      "id": "weber-runic-art",
+      "title": "Руническое искусство",
+      "authors": [
+        "Эдмунд Вебер"
+      ],
+      "format": "FB2",
+      "provided_filename": "460182.fb2",
+      "sha256": "ed7240f93824e408d15eeb34fe706dd311eed5ef2c58185e82f164b3abf4b734",
+      "bytes": 3179283,
+      "sections": 57,
+      "images": 111,
+      "note": "notes/weber-runic-art.md",
+      "full_text_public": false,
+      "reading_status": "Структура, вступления и тематические фрагменты"
+    },
+    {
+      "id": "thorsson-northern-magic",
+      "title": "Северная магия: мистеpии геpманских наpодов",
+      "authors": [
+        "Эдред Торссон"
+      ],
+      "format": "FB2",
+      "provided_filename": "198128.fb2",
+      "sha256": "134b8ab8e2c71c883dbfc8d1a9bb32b8a3b9edc85b5ab358deace5a7f1b62f82",
+      "bytes": 645765,
+      "sections": 38,
+      "images": 136,
+      "note": "notes/thorsson-northern-magic.md",
+      "full_text_public": false,
+      "reading_status": "Структура, вступления и тематические фрагменты"
+    },
+    {
+      "id": "aswynn-northern-mysteries",
+      "title": "Мистерии и магия Севера",
+      "authors": [
+        "Фрейя Асвинн"
+      ],
+      "format": "FB2",
+      "provided_filename": "159155.fb2",
+      "sha256": "49558a0902ec3190be32e03c781b50b8d97186e80b4ec9483fcd14a590d44fed",
+      "bytes": 574382,
+      "sections": 85,
+      "images": 0,
+      "note": "notes/aswynn-northern-mysteries.md",
+      "full_text_public": false,
+      "reading_status": "Структура, вступления и тематические фрагменты"
+    },
+    {
+      "id": "meadows-rune-magic",
+      "title": "Магия рун",
+      "authors": [
+        "Кеннет Медоуз"
+      ],
+      "format": "FB2",
+      "provided_filename": "114555.fb2",
+      "sha256": "bcf5da114b387525c0d570b7d37f751511b8d52dfd7d23bc04feaf86b44c2e1b",
+      "bytes": 1782853,
+      "sections": 21,
+      "images": 71,
+      "note": "notes/meadows-rune-magic.md",
+      "full_text_public": false,
+      "reading_status": "Структура, вступления и тематические фрагменты"
+    },
+    {
+      "id": "shaposhnikov-book-of-runes-1",
+      "title": "Книга Рун. 1 том",
+      "authors": [
+        "Олег Михайлович Шапошников"
+      ],
+      "format": "FB2",
+      "provided_filename": "800434.fb2",
+      "sha256": "916362418b187b621303e4fa51654abbf2c35da53d64ad1a8e3ec40b93906633",
+      "bytes": 5268828,
+      "sections": 45,
+      "images": 168,
+      "note": "notes/shaposhnikov-book-of-runes-1.md",
+      "full_text_public": false,
+      "reading_status": "Структура, вступления и тематические фрагменты"
+    },
+    {
+      "id": "platov-van-dart-practical-course",
+      "title": "Практический курс рунического искусства",
+      "authors": [
+        "Антон Платов",
+        "Алекс ван Дарт"
+      ],
+      "format": "FB2",
+      "provided_filename": "199479.fb2",
+      "sha256": "e3a14d1fbd3a576dedadbcb0a3ebd26d325523cc7b51e903189690b09ab9943b",
+      "bytes": 6618009,
+      "sections": 20,
+      "images": 306,
+      "note": "notes/platov-van-dart-practical-course.md",
+      "full_text_public": false,
+      "reading_status": "Структура, вступления и тематические фрагменты"
+    }
+  ]
+}
